@@ -280,7 +280,7 @@ if(count($_SESSION['panier']) > 0){
                             <?php if(!empty($produit['image']) && file_exists('../image/' . $produit['image'])): ?>
                                 <img src="../image/<?php echo $produit['image']; ?>" alt="<?php echo $produit['nom']; ?>">
                             <?php else: ?>
-                                <div style="font-size:60px;color:white;">📦</div>
+                                <div style="font-size:60px;color:white;"></div>
                             <?php endif; ?>
                         </div>
                         
