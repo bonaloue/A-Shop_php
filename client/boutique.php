@@ -2,18 +2,15 @@
 session_start();
 include "../db.php";
 
-// Vérifier si l'utilisateur est connecté
 if(!isset($_SESSION['user_id'])){
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit();
 }
 
-// Initialiser le panier s'il n'existe pas
 if(!isset($_SESSION['panier'])){
     $_SESSION['panier'] = array();
 }
 
-// Gestion des actions panier
 if(isset($_POST['action'])){
     $id_produit = $_POST['id_produit'];
     
@@ -33,14 +30,12 @@ if(isset($_POST['action'])){
     }
 }
 
-// Récupérer tous les produits
 $sql = "SELECT p.*, c.nom as categorie_nom 
         FROM produit p 
         LEFT JOIN categorie c ON p.id_categorie = c.id_categorie 
         ORDER BY p.date_ajout DESC";
 $result = $conn->query($sql);
 
-// Calculer le total du panier
 $total_panier = 0;
 $nb_articles = 0;
 if(count($_SESSION['panier']) > 0){
@@ -148,6 +143,12 @@ if(count($_SESSION['panier']) > 0){
         justify-content: center;
         color: white;
         font-size: 48px;
+        overflow: hidden;
+    }
+    .product-image img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
     .product-info{
         padding: 20px;
@@ -276,12 +277,13 @@ if(count($_SESSION['panier']) > 0){
                         <?php endif; ?>
                         
                         <div class="product-image">
-                        <?php if(!empty($produit['image']) && file_exists('../image/' . $produit['image'])): ?>
-                           <img src="../image/<?php echo $produit['image']; ?>" alt="<?php echo $produit['nom']; ?>" style="width:100%;height:100%;object-fit:cover;">    
-                        <?php else: ?>
-                                <div style="font-size:60px;color:white;"></div>
+                            <?php if(!empty($produit['image']) && file_exists('../image/' . $produit['image'])): ?>
+                                <img src="../image/<?php echo $produit['image']; ?>" alt="<?php echo $produit['nom']; ?>">
+                            <?php else: ?>
+                                <div style="font-size:60px;color:white;">📦</div>
                             <?php endif; ?>
                         </div>
+                        
                         <div class="product-info">
                             <div class="product-category"><?php echo $produit['categorie_nom'] ? $produit['categorie_nom'] : 'Sans catégorie'; ?></div>
                             <div class="product-name"><?php echo $produit['nom']; ?></div>
@@ -299,16 +301,16 @@ if(count($_SESSION['panier']) > 0){
                             </div>
                             
                             <div class="product-actions">
-                                <form action="produits.php" method="post" style="flex: 1;">
+                                <form action="boutique.php" method="post" style="flex: 1;">
                                     <input type="hidden" name="id_produit" value="<?php echo $produit['id_produit']; ?>">
                                     <input type="hidden" name="action" value="ajouter">
                                     <button type="submit" class="btn-action btn-ajouter">
-                                        <?php echo isset($_SESSION['panier'][$produit['id_produit']]) ? '+ Ajouter encore' : '🛒 Ajouter'; ?>
+                                        <?php echo isset($_SESSION['panier'][$produit['id_produit']]) ? '+ Ajouter encore' : 'Ajouter'; ?>
                                     </button>
                                 </form>
                                 
                                 <?php if(isset($_SESSION['panier'][$produit['id_produit']])): ?>
-                                <form action="produits.php" method="post" style="flex: 1;">
+                                <form action="boutique.php" method="post" style="flex: 1;">
                                     <input type="hidden" name="id_produit" value="<?php echo $produit['id_produit']; ?>">
                                     <input type="hidden" name="action" value="retirer">
                                     <button type="submit" class="btn-action btn-retirer">Retirer</button>

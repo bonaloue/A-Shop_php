@@ -21,35 +21,133 @@ body{
     align-items:center;
     gap:10px;
 }
-.header-nav{display:flex;align-items:center;gap:15px;}
-.btn{padding:10px 20px;text-decoration:none;border-radius:5px;border:none;cursor:pointer;font-weight:bold;display:inline-flex;align-items:center;gap:8px;transition:0.3s;}
-.btn-back{background:white;color:#ff6b6b;}
-.btn-back:hover{background:#f8f8f8;}
-.btn-logout{background:rgba(255,255,255,0.2);color:white;border:1px solid white;}
-.btn-logout:hover{background:rgba(255,255,255,0.3);}
-.container{max-width:1400px;margin:30px auto;padding:0 20px;}
-.message{padding:15px;border-radius:5px;margin-bottom:20px;display:flex;align-items:center;gap:10px;font-weight:500;}
-.message-success{background:#d4edda;color:#155724;}
-.message-error{background:#f8d7da;color:#721c24;}
+.header-nav{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+.btn{
+    padding:10px 20px;
+    text-decoration:none;
+    border-radius:5px;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:0.3s;
+}
+.btn-back{
+    background:white;
+    color:#ff6b6b;
+}
+.btn-back:hover{
+    background:#f8f8f8;
+}
+.btn-logout{
+    background:rgba(255,255,255,0.2);
+    color:white;
+    border:1px solid white;
+}
+.btn-logout:hover{
+    background:rgba(255,255,255,0.3);
+}
+.container{
+    max-width:1400px;
+    margin:30px auto;
+    padding:0 20px;
+}
+.message{
+    padding:15px;
+    border-radius:5px;
+    margin-bottom:20px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:500;
+}
+.message-success{
+    background:#d4edda;
+    color:#155724;
+}
+.message-error{
+    background:#f8d7da;
+    color:#721c24;
+}
 .message ion-icon{font-size:24px;}
-.form-card{background:white;padding:30px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1);margin-bottom:30px;}
-.form-card h2{margin-bottom:20px;display:flex;align-items:center;gap:10px;color:#333;}
-.form-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin-bottom:15px;}
-.form-group{display:flex;flex-direction:column;}
-label{font-weight:bold;margin-bottom:5px;color:#555;}
-input,textarea,select{padding:10px;border:1px solid #ccc;border-radius:5px;font-size:14px;}
-textarea{resize:vertical;min-height:80px;font-family:'Segoe UI',sans-serif;}
-input:focus,textarea:focus,select:focus{outline:none;border-color:#6e8efb;}
-.btn-primary{background:#6e8efb;color:white;width:100%;}
-.btn-primary:hover{background:#5b73ef;}
-.table-card{background:white;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,0.1);}
-table{width:100%;border-collapse:collapse;}
-th{background:#ff6b6b;color:white;padding:15px;text-align:left;font-weight:600;}
-td{padding:15px;border-bottom:1px solid #eee;}
-tr:hover{background:#f9f9f9;}
-.btn-delete{background:#ff4444;color:white;padding:8px 15px;border-radius:5px;border:none;cursor:pointer;}
-.btn-delete:hover{background:#cc0000;}
-.btn-validate{background:#44ff44;color:#155724;padding:8px 15px;border-radius:5px;border:none;cursor:pointer;font-weight:bold;}
+.form-card{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom:30px;
+}
+.form-card h2{
+    margin-bottom:20px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#333;}
+.form-row{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;margin-bottom:15px;
+}
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
+label{
+    font-weight:bold;
+    margin-bottom:5px;
+    color:#555;
+}
+input,textarea,select{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    font-size:14px;
+}
+textarea{
+    resize:vertical;
+    min-height:80px;
+    font-family:'Segoe UI',sans-serif;
+}
+input:focus,textarea:focus,select:focus{
+    outline:none;
+    border-color:#6e8efb;
+}
+.btn-primary{
+    background:#6e8efb;
+    color:white;
+    width:100%;
+}
+.btn-primary:hover{
+    background:#5b73ef;
+}
+.table-card{
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+th{
+    background:#ff6b6b;color:white;padding:15px;text-align:left;font-weight:600;}
+td{
+    padding:15px;border-bottom:1px solid #eee;}
+tr:hover{
+    background:#f9f9f9;}
+.btn-delete{
+    background:#ff4444;color:white;padding:8px 15px;border-radius:5px;border:none;cursor:pointer;}
+.btn-delete:hover{
+    background:#cc0000;}
+.btn-validate{
+    background:#44ff44;color:#155724;padding:8px 15px;border-radius:5px;border:none;cursor:pointer;font-weight:bold;}
 .btn-validate:hover{background:#33dd33;}
 .btn-update{background:#6e8efb;color:white;padding:8px 15px;border-radius:5px;border:none;cursor:pointer;}
 .btn-update:hover{background:#5b73ef;}

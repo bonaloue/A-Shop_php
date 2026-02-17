@@ -90,7 +90,7 @@ session_start();
     <div class="hero">
         <h1>Bienvenue sur A-Shop</h1>
         <p>Votre boutique en ligne de confiance au Burkina Faso</p>
-        <a href="boutique.php" class="btn-shop">Découvrir nos produits</a>
+        <a href="client/boutique.php" class="btn-shop">Découvrir nos produits</a>
     </div>
     
     <div class="container">

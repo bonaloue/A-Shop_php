@@ -94,11 +94,11 @@ $user_role = $is_logged_in ? $_SESSION['role'] : '';
 <nav class="navbar">
     <div class="navbar-container">
         <a href="accueil.php" class="navbar-logo">
-            <img src="image/logo.png" alt="A-Shop">
+            <img src="/Projet_A-Shop/image/logo.png" alt="A-Shop">
             <span>A-Shop</span>
         </a>
         <?php
-            $base = '/Projet_A-Shop'; // ou '' si vous êtes à la racine
+            $base = '/Projet_A-Shop';
         ?>
         <ul class="navbar-menu">
             <li><a href="<?= $base ?>/accueil.php">Accueil</a></li>

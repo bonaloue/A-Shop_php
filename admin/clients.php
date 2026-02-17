@@ -34,7 +34,7 @@ body{
     <div class="container">
         <div class="table-card">
             <table>
-                <thead><tr><th>ID</th><th>Nom</th><th>Email</th><th>Téléphone</th><th>Ville</th><th>Pays</th><th>Date inscription</th></tr></thead>
+                <thead><tr><th>ID</th><th>Nom</th><th>Email</th><th>Téléphone</th><th>Date inscription</th></tr></thead>
                 <tbody>
                     <?php if($result->num_rows > 0): while($c = $result->fetch_assoc()): ?>
                     <tr>

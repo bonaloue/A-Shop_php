@@ -11,13 +11,12 @@ if(isset($_POST['action'])){
         $id_categorie = $_POST['id_categorie'];
         $image = '';
         
-        
         if(isset($_FILES['image']) && $_FILES['image']['error'] == 0){
             $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
             $file_extension = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
             
             if(in_array($file_extension, $allowed_extensions)){
-                $upload_dir = '../uploads/produits/';
+                $upload_dir = '../image/';
                 if(!is_dir($upload_dir)){
                     mkdir($upload_dir, 0777, true);
                 }
@@ -26,6 +25,7 @@ if(isset($_POST['action'])){
                 $upload_path = $upload_dir . $image;
                 
                 if(move_uploaded_file($_FILES['image']['tmp_name'], $upload_path)){
+                    
                 } else {
                     echo '<div class="message message-error"><ion-icon name="alert-circle-outline"></ion-icon>Erreur lors de l\'upload de l\'image</div>';
                     $image = '';
@@ -52,13 +52,12 @@ if(isset($_POST['action'])){
         $result_img = $stmt_img->get_result();
         $prod = $result_img->fetch_assoc();
         
-
         $sql = "DELETE FROM produit WHERE id_produit = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $id);
         if($stmt->execute()){ 
-            if(!empty($prod['image']) && file_exists('../uploads/produits/' . $prod['image'])){
-                unlink('../uploads/produits/' . $prod['image']);
+            if(!empty($prod['image']) && file_exists('../image/' . $prod['image'])){
+                unlink('../image/' . $prod['image']);
             }
             echo '<div class="message message-success"><ion-icon name="checkmark-circle-outline"></ion-icon>Produit supprimé !</div>'; 
         }
@@ -119,7 +118,6 @@ $result_cat = $conn->query("SELECT * FROM categorie ORDER BY nom");
 <script>
 function previewImage(input) {
     const preview = document.getElementById('imagePreview');
-    const placeholder = document.getElementById('imagePlaceholder');
     
     if (input.files && input.files[0]) {
         const reader = new FileReader();
@@ -130,7 +128,7 @@ function previewImage(input) {
         
         reader.readAsDataURL(input.files[0]);
     } else {
-        preview.innerHTML = '<div class="image-preview-placeholder" id="imagePlaceholder"><ion-icon name="image-outline" style="font-size:40px;"></ion-icon><br>Aperçu de l\'image</div>';
+        preview.innerHTML = '<div class="image-preview-placeholder"><ion-icon name="image-outline" style="font-size:40px;"></ion-icon><br>Aperçu de l\'image</div>';
     }
 }
 </script>
@@ -170,7 +168,7 @@ function previewImage(input) {
             <label><ion-icon name="image-outline"></ion-icon> Image du produit (jpg, png, gif, webp)</label>
             <input type="file" name="image" accept="image/*" onchange="previewImage(this)">
             <div class="image-preview" id="imagePreview">
-                <div class="image-preview-placeholder" id="imagePlaceholder">
+                <div class="image-preview-placeholder">
                     <ion-icon name="image-outline" style="font-size:40px;"></ion-icon><br>
                     Aperçu de l'image
                 </div>
@@ -199,8 +197,8 @@ function previewImage(input) {
             <tr>
                 <td>
                     <div class="product-image-cell">
-                        <?php if(!empty($p['image']) && file_exists('../uploads/produits/' . $p['image'])): ?>
-                            <img src="../uploads/produits/<?php echo $p['image']; ?>" alt="<?php echo $p['nom']; ?>">
+                        <?php if(!empty($p['image']) && file_exists('../image/' . $p['image'])): ?>
+                            <img src="../image/<?php echo $p['image']; ?>" alt="<?php echo $p['nom']; ?>">
                         <?php else: ?>
                             <div class="no-image">
                                 <ion-icon name="image-outline"></ion-icon>
@@ -229,4 +227,4 @@ function previewImage(input) {
     </table>
 </div>
 
-<?php $conn->close(); include "admin_footer.php"; ?>
+<?php $conn->close(); ?>
